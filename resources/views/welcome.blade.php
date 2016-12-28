@@ -68,7 +68,7 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="links">
-                    <a href="/login1">Get Play Lists</a>
+                    <a href="{{url("/get_playlists")}}">Get Play Lists</a>
                 </div>
             </div>
         </div>

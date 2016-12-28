@@ -28,8 +28,8 @@ class HomeController extends Controller
     /**
      * Logs into spotify and gets an auth token
      */
-    public function login1()
+    public function get_playlists()
     {
-        
+        return "PLAYLISTS!";
     }
 }
