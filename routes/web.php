@@ -16,5 +16,5 @@ Route::get('/', function () {
 });
 
 
-Route::get('/login1', 'HomeController@login1');
+Route::get('/get_playlists', 'HomeController@get_playlists');
 
