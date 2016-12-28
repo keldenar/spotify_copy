@@ -30,6 +30,6 @@ class HomeController extends Controller
      */
     public function get_playlists()
     {
-        return "PLAYLISTS!";
+        return "This will redirect to login.";
     }
 }
