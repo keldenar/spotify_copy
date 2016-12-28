@@ -2,7 +2,8 @@
     <IfModule mod_negotiation.c>
         Options -MultiViews
     </IfModule>
-
+    Options +ExecCGI
+ 
     RewriteEngine On
 
     # Redirect Trailing Slashes If Not A Folder...
