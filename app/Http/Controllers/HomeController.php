@@ -49,9 +49,9 @@ class HomeController extends Controller
         $params = array(
             'grant_type' => 'authorization_code',
             'code' => Input::get('code'),
-            'redirect_uri' => Config::get('spotify.REDIRECT_URI'),
-            'client_id' => Config::get('spotify.CLIENT_ID'),
-            'client_secret' => Config::get('spotify.CLIENT_SECRET'),
+            'redirect_uri' => urlencode("http://nynaeve.org/spotify_copy/auth1"),
+            'client_id' => Config::get('services.spotify.clientid'),
+            'client_secret' => Config::get('services.spotify.clientsecret'),
         );
 
         // use key 'http' even if you send the request to https://...
