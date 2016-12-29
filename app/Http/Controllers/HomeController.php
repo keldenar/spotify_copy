@@ -43,7 +43,7 @@ class HomeController extends Controller
     public function auth1(Request $request, Response $response)
     {
         $full_req = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
-        dump($request, $response, $full_req);
+        dump($request, $response, $full_req->getQueryString());
 
     }
 }
