@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 
 Route::get('/get_playlists', 'HomeController@get_playlists');
+Route::get('/auth1', 'HomeController@auth1');
 

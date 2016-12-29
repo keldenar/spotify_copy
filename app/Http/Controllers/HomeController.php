@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 
 class HomeController extends Controller
 {
@@ -30,6 +32,16 @@ class HomeController extends Controller
      */
     public function get_playlists()
     {
-        return "This will redirect to login.";
+        $endpoint = sprintf("https://accounts.spotify.com/authorize?client_id=%s&redirect_uri=%s&scope=%s&response_type=token", config('services.spotify.clientid'), urlencode("http://nynaeve.org/spotify_copy/auth1"),"playlist-read-private");
+        return redirect($endpoint);
+    }
+
+    /**
+     * Gets the auth token from the request
+     *
+     */
+    public function auth1(Response $response)
+    {
+        dump($response);
     }
 }

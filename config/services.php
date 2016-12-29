@@ -34,5 +34,9 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'spotify' => [
+        'clientid'=> "3d0f396713f24620931585ed299bec47",
+        'clientsecret'=> "519584ee083a4ed39cd1e6acaec8a318",
+    ]
 
 ];
