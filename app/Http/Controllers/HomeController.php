@@ -40,8 +40,8 @@ class HomeController extends Controller
      * Gets the auth token from the request
      *
      */
-    public function auth1(Request $request)
+    public function auth1(Request $request, Response $response)
     {
-        dump($request);
+        dump($request, $response);
     }
 }
