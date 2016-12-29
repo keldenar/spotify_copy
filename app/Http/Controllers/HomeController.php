@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 
 class HomeController extends Controller
@@ -42,8 +45,28 @@ class HomeController extends Controller
      */
     public function auth1(Request $request, Response $response)
     {
+        $endpoint = sprintf("https://accounts.spotify.com/api/token");
+        $params = array(
+            'grant_type' => 'authorization_code',
+            'code' => Input::get('code'),
+            'redirect_uri' => Config::get('spotify.REDIRECT_URI'),
+            'client_id' => Config::get('spotify.CLIENT_ID'),
+            'client_secret' => Config::get('spotify.CLIENT_SECRET'),
+        );
 
-        dump($request, $response);
+        // use key 'http' even if you send the request to https://...
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($params),
+            ),
+        );
+        $context  = stream_context_create($options);
+        $result = json_decode(file_get_contents($endpoint, false, $context));
+
+        Session::put('access_token', $result->access_token);
+        dump($result->access_token);
 
     }
 }
