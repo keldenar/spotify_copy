@@ -69,8 +69,8 @@ class HomeController extends Controller
 
         $BASE_URL = "https://api.spotify.com";
 
-        $return = $this->call_spotify($BASE_URL."/v1/me/playlists");
-        
+        $return = json_decode($this->call_spotify($BASE_URL."/v1/me/playlists"));
+
         dump($return);
 
     }
