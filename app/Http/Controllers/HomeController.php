@@ -66,7 +66,28 @@ class HomeController extends Controller
         $result = json_decode(file_get_contents($endpoint, false, $context));
 
         Session::put('access_token', $result->access_token);
-        dump($result->access_token);
 
+        $BASE_URL = "https://api.spotify.com";
+
+        $return = $this->call_spotify($BASE_URL."/v1/me/playlists");
+        
+        dump($return);
+
+    }
+
+    public function call_spotify($url) {
+        $headerStr = "Authorization: Bearer ". Session::get('access_token') ."\r\n";
+        // Create a stream
+        $opts = array(
+            'http'=>array(
+                'method'=>"GET",
+                'header'=>$headerStr,
+            )
+        );
+
+        $context = stream_context_create($opts);
+
+        // Open the file using the HTTP headers set above
+        return file_get_contents($url, false, $context);
     }
 }
