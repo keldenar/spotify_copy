@@ -42,7 +42,7 @@ class HomeController extends Controller
      */
     public function auth1(Request $request, Response $response)
     {
-        dump($request, $response);
+        dump($request->all(), $response);
 
     }
 }
