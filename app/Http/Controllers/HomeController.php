@@ -72,6 +72,9 @@ class HomeController extends Controller
         $return = json_decode($this->call_spotify($BASE_URL."/v1/me/playlists"));
 
         foreach($return->items as $item) {
+            if ($item->owner->id != "keldenar") {
+                continue;
+            }
             dump($item);
         }
 
